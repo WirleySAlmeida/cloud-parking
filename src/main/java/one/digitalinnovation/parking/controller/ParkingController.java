@@ -47,7 +47,7 @@ public class ParkingController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity delete(@PathVariable String id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         parkingService.delete(id);
         return ResponseEntity.noContent().build();
     }
@@ -61,8 +61,8 @@ public class ParkingController {
     }
 
     @PostMapping("{id}")
-    public ResponseEntity<ParkingDTO> exit(@PathVariable String id) {
-        Parking parking = parkingService.exit(id);
+    public ResponseEntity<ParkingDTO> checkout(@PathVariable String id) {
+        Parking parking = parkingService.checkout(id);
         return ResponseEntity.ok(parkingMapper.toParkingDTO(parking));
     }
 }
